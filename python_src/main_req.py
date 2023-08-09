@@ -37,7 +37,7 @@ def steambuy_request(url):
         if product_price_element:
             price_text = product_price_element.text.strip()
 
-            data["SteamBuy"] = price_text
+            data["SteamBuy"] = ''.join(filter(str.isdigit, price_text))
 
         else:
             print("Элемент не найден.")
@@ -53,9 +53,7 @@ def zakazaka_request(url):
         product_price_element = soup.find('div', class_='price')
         if product_price_element:
             price_text = product_price_element.text.strip()
-            tr = str.maketrans("", "", string.ascii_letters) # чтобы убрать буквы 
-
-            data["zakazaka"] = price_text.translate(tr)
+            data["zakazaka"] = ''.join(filter(str.isdigit, price_text))
         else:
             print("Элемент не найден.")
 
@@ -68,7 +66,7 @@ def steampay_request(url):
         product_price_element = soup.find('div', class_="product__current-price")
         if product_price_element:
             price_text = product_price_element.text.strip()
-            data["SteamPay"] = price_text
+            data["SteamPay"] = ''.join(filter(str.isdigit, price_text))
         else:
             print("Error steampay")
 

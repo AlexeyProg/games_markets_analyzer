@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <QProcess>
-#include <QDir>
+
+#include "obj/connector.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,13 +17,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QProcess *pr;
-    void readjson();
+
 
 private slots:
     void on_lineEdit_returnPressed();
 
 private:
     Ui::MainWindow *ui;
+    Connector con;
+    QProcess *pr;
 };
 #endif // MAINWINDOW_H
